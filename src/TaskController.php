@@ -28,7 +28,7 @@ class TaskController
                     return;
                 }
 
-                $id = $this->taskGateway->create($data);
+                $id = $this->taskGateway->createForUser($this->user_id, $data);
 
                 $this->responseCreated($id);
             } else {
@@ -41,7 +41,7 @@ class TaskController
                 return;
             }
 
-            $task = $this->taskGateway->get($id);
+            $task = $this->taskGateway->getForUser($this->user_id, $id);
 
             if ($task === false) {
                 $this->respondNotFound($id);
@@ -63,7 +63,7 @@ class TaskController
                         return;
                     }
 
-                    $rows = $this->taskGateway->update($id, $data);
+                    $rows = $this->taskGateway->updateForUser($this->user_id, $id, $data);
                     echo json_encode([
                         "message" => "Task updated",
                         "row" => $rows,
@@ -71,7 +71,7 @@ class TaskController
                     break;
 
                 case "DELETE":
-                    $rows = $this->taskGateway->delete($id);
+                    $rows = $this->taskGateway->deleteForUser($this->user_id, $id);
 
                     echo json_encode([
                         "message" => "Task deleted",
