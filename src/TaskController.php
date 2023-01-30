@@ -4,7 +4,8 @@ class TaskController
 {
 
     public function __construct(
-        private TaskGateway $taskGateway
+        private TaskGateway $taskGateway,
+        private int $user_id
     )
     {
 
@@ -14,7 +15,7 @@ class TaskController
 
         if ($id === null) {
             if ($method == "GET") {
-                $result = $this->taskGateway->getAll();
+                $result = $this->taskGateway->getAllForUser($this->user_id);
                 echo json_encode($result);
 
             } elseif ($method == "POST") {
