@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\system32\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "/K",
+        "C:\\laragon\\bin\\cmder\\vscode.bat"
+    ]
+}
